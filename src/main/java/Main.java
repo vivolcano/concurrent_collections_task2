@@ -6,19 +6,14 @@ public class Main {
 
         CollectionMap collectionMap = new CollectionMap();
 
-        new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "1").start();
-        new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "2").start();
-        new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "3").start();
-        new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "4").start();
-        new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "5").start();
+        for (int i = 0; i < 10; i++) {
+            new Thread(null, () -> collectionMap.putColMap(makeRandArray()), "" + i).start();
+        }
 
-
-        new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "1").start();
-        new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "2").start();
-        new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "3").start();
-        new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "4").start();
-        new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "5").start();
-
+        for (int i = 0; i < 10; i++) {
+            new Thread(null, () -> collectionMap.putConcurrentMap(makeRandArray()), "" + i).start();
+        }
+        
     }
 
     private static int[] makeRandArray() {
